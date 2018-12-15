@@ -1,0 +1,72 @@
+﻿<Window x:Class="WPF_PDFDocument.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:WPF_PDFDocument.Controls"
+        mc:Ignorable="d"
+        Title="Quick Pdf Editor" Height="720" Width="1280" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel VerticalAlignment="Top" Grid.Row="0">
+            <Menu Height="20">
+             
+                <MenuItem Header="File">
+                    <MenuItem Header="Open" Click="OpenFileDialog_Click"></MenuItem>
+                    <MenuItem Header="New Blank" Click="NewBlankPdf_Click"></MenuItem>
+                    <MenuItem Header="Save" Click="Save_Click"></MenuItem>
+                    <MenuItem Header="Save All" Click="SaveAll_Click"></MenuItem>
+                    <MenuItem Header="Save As" Click="SaveAs_Click"></MenuItem>
+                    <MenuItem Header="Exit" Click="Exit_Click"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="View">
+                    <MenuItem Header="New Tab" Click="NewTabClick"></MenuItem>
+                    <MenuItem Name="BtnClose" Header="Close" Click="Close_Click"></MenuItem>
+                    <MenuItem Header="Close All" Click="CloseAll_Click"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Help">
+                    <MenuItem Header="About" Click="MenuItem_Click"></MenuItem>
+                </MenuItem>
+            </Menu>
+
+            <TabControl Height="100" VerticalAlignment="Top" SelectionChanged="TabControl_SelectionChanged">
+                <TabItem Name="home" Header="Home">
+                    <StackPanel Name="HomeStack" Orientation="Horizontal">
+                        <controls:TabButton Text="Open" IconPath="Icon\Open.png" PreviewMouseDown="Open_Click"></controls:TabButton>
+                        <controls:TabButton Text="New Blank" IconPath="Icon\NewBlank.png" PreviewMouseDown="NewBlankClick"></controls:TabButton>
+                        <controls:TabButton Text="Save" IconPath="Icon\Save.png" PreviewMouseDown="Save"></controls:TabButton>
+                        <controls:TabButton Text="Save All" IconPath="Icon\SaveAll.png" PreviewMouseDown="SaveAll"></controls:TabButton>
+
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Edit" >
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <controls:TabButton x:Name="BtnInsertPage" Text="Insert Page" PreviewMouseDown="InsertPage" IconPath="Icon\InsertPage.png"></controls:TabButton>
+                        <controls:TabButton  Text="Delete Page" IconPath="Icon\DeletePage.png" PreviewMouseDown="DeletePage_Click"></controls:TabButton>
+                        <controls:TabButton Text="PdfMerger" IconPath="Icon\PdfMerger.png"></controls:TabButton>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="View">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <controls:TabButton Text="New Tab" PreviewMouseDown="NewTab_Click" Margin="10,0,10,0" IconPath="Icon\NewTab.png"></controls:TabButton>
+                        <controls:TabButton Text="Close Tab" PreviewMouseDown="CloseTab_Click" Margin="10,0,10,0" IconPath="Icon\CloseTab.png"></controls:TabButton>
+                        <controls:TabButton Text="Close All" PreviewMouseDown="btnCloseAll_Click" Margin="10,0,10,0" IconPath="Icon\CloseAll.png"></controls:TabButton>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Comment">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <controls:TabButton Text="bLine" PreviewMouseDown="NewLine_Click" Margin="10,0,10,0" IconPath="Icon\NewTab.png"></controls:TabButton>
+                        <controls:TabButton Text="bRectangle" PreviewMouseDown="NewRectangle_Click" Margin="10,0,10,0" IconPath="Icon\CloseTab.png"></controls:TabButton>
+                        <controls:TabButton Text="bEllipes" PreviewMouseDown="NewEllipes_Click" Margin="10,0,10,0" IconPath="Icon\CloseAll.png"></controls:TabButton>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+
+        <TabControl Name="TabController" Grid.Row="1" Background="Gray">
+        </TabControl>
+    </Grid>
+</Window>
